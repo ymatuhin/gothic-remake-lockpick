@@ -19,5 +19,8 @@
   ],
   "author": "",
   "license": "ISC",
-  "description": "Browser solver for Gothic 1 Remake lockpicking minigame chest locks."
+  "description": "Browser solver for Gothic 1 Remake lockpicking minigame chest locks.",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
 }

@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gothic 1 Remake Lockpick Solver for Chest Locks</title>
+    <meta
+      name="description"
+      content="Set up the chest lock plates from Gothic 1 Remake, add Same or Opposite links, and get a short sequence for the lockpicking puzzle."
+    >
+    <meta
+      name="keywords"
+      content="Gothic 1 Remake lockpick solver, Gothic Remake lockpicking, chest lock puzzle, plate links, slider puzzle"
+    >
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Gothic 1 Remake Lockpick Solver">
+    <meta
+      property="og:description"
+      content="Enter plate positions and links from a Gothic Remake chest lock to find a compact sequence of moves."
+    >
+    <meta property="og:image" content="/social-share.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta
+      property="og:image:alt"
+      content="A gothic chest lock with brass moving plates and lockpick tools on a dark medieval workbench."
+    >
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Gothic 1 Remake Lockpick Solver">
+    <meta
+      name="twitter:description"
+      content="Enter plate positions and links from a Gothic Remake chest lock to find a compact sequence of moves."
+    >
+    <meta name="twitter:image" content="/social-share.png">
+    <meta
+      name="twitter:image:alt"
+      content="A gothic chest lock with brass moving plates and lockpick tools on a dark medieval workbench."
+    >
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="canonical" href="/">
+    <link rel="alternate" hreflang="en" href="/">
+    <link rel="alternate" hreflang="de" href="/de/">
+    <link rel="alternate" hreflang="pl" href="/pl/">
+    <link rel="alternate" hreflang="ru" href="/ru/">
+    <link rel="alternate" hreflang="es" href="/es/">
+    <link rel="alternate" hreflang="fr" href="/fr/">
+    <link rel="alternate" hreflang="x-default" href="/">
+    <link rel="stylesheet" href="/styles.css">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Gothic 1 Remake Lockpick Solver",
+        "alternateName": [
+          "Gothic Remake Lockpicking Solver",
+          "Gothic Lock Solver",
+          "Gothic Chest Lock Solver",
+          "Gothic Remake Chest Solver",
+          "Gothic Lockpicker"
+        ],
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Any",
+        "description": "A browser tool for Gothic 1 Remake chest lock puzzles with linked plate movement.",
+        "keywords": "Gothic 1 Remake lockpick solver, Gothic Remake lockpicking, chest lock puzzle, plate links",
+        "inLanguage": "en"
+      }
+    </script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="masthead">
+        <div>
+          <p class="eyebrow">Chest lock tool</p>
+          <h1>Gothic 1 Remake Lockpick Solver</h1>
+          <p class="subtitle">Recreate the plate layout, mark linked movement, and turn a stubborn chest into a clean move sequence.</p>
+        </div>
+        <label class="plate-count">
+          <span>Plates</span>
+          <select id="plate-count" aria-label="Plate count"></select>
+        </label>
+      </header>
+
+      <section class="solver-panel" aria-label="Lock configuration">
+        <div class="table-wrap">
+          <table class="lock-table">
+            <thead>
+              <tr>
+                <th scope="col" class="plate-head">Plate</th>
+                <th scope="col">1</th>
+                <th scope="col">2</th>
+                <th scope="col">3</th>
+                <th scope="col" class="center-col">4</th>
+                <th scope="col">5</th>
+                <th scope="col">6</th>
+                <th scope="col">7</th>
+                <th scope="col" class="plate-head">Plate</th>
+                <th scope="col" class="link-head">Same</th>
+                <th scope="col" class="link-head">Opposite</th>
+              </tr>
+            </thead>
+            <tbody id="lock-body"></tbody>
+          </table>
+        </div>
+
+        <div class="actions">
+          <div class="action-buttons">
+            <button id="solve-button" class="solve-button" type="button">Solve</button>
+            <button id="reset-button" class="reset-button" type="button">Reset</button>
+          </div>
+          <p class="hint">Use plate numbers in Same/Opposite, for example <span>24</span> or <span>2,4</span>.</p>
+        </div>
+      </section>
+
+      <section id="messages" class="messages" aria-live="polite"></section>
+      <section id="result" class="result" aria-live="polite"></section>
+
+      <section class="seo-copy" aria-labelledby="lockpicking-guide-title">
+        <div class="seo-copy-inner">
+          <h2 id="lockpicking-guide-title">Solving Chest Locks in Gothic 1 Remake</h2>
+          <p>
+            The remake turns chest lockpicking into a small logic puzzle: several plates sit on a
+            seven-step track, and the lock opens when every plate lands in the middle. This tool follows
+            the plate wording used here, but it matches the same mechanic players may describe as sliders,
+            pins, tumblers, rows, or gates.
+          </p>
+          <p>
+            Instead of guessing the old left-right combination from the original Gothic, copy the current
+            lock into the table. Mark each starting position from 1 to 7; position 4 is the center and the
+            target for every plate.
+          </p>
+          <p>
+            The hard part is that plates are linked. Moving one plate can also move other plates in the
+            same direction or in the opposite direction, so a single move may improve one part of the
+            lock while pushing another plate away from the center. Add those Same and Opposite links, then
+            let the solver calculate a short route through the Gothic 1 Remake lockpicking puzzle.
+          </p>
+          <p>
+            The current lock configuration is saved in the page URL automatically, so you can bookmark
+            a puzzle, refresh the page without losing it, or share the exact setup with someone else.
+          </p>
+
+          <h3>How to Use It</h3>
+          <ol>
+            <li>Select the number of plates shown on the chest lock.</li>
+            <li>Mark the current position of each plate from 1 to 7.</li>
+            <li>Enter linked plates in Same or Opposite when moving a plate affects another one.</li>
+            <li>Press Solve and follow the compact plate-and-arrow solution.</li>
+          </ol>
+
+          <h3>Why These Locks Feel Tricky</h3>
+          <p>
+            The puzzle is readable once the links are mapped, but it is easy to make a legal move that
+            fixes one plate and ruins another. Training lockpicking in the game may make the process more
+            forgiving; the real shortcut is understanding how the linked plates influence each other.
+          </p>
+        </div>
+      </section>
+
+      <footer class="language-footer" aria-label="Language versions">
+        <p class="copyright">© 2026 Gothic 1 Remake Lockpick Solver</p>
+        <nav aria-label="Language versions">
+          <a href="/">English</a>
+          <a href="/de/">Deutsch</a>
+          <a href="/pl/">Polski</a>
+          <a href="/ru/">Русский</a>
+          <a href="/es/">Español</a>
+          <a href="/fr/">Français</a>
+        </nav>
+      </footer>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

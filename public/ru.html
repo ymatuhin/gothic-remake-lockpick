@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Решатель замков для Gothic 1 Remake</title>
+    <meta name="description" content="Перенесите пластины замка из Gothic 1 Remake, отметьте связи Вместе/Против и получите короткую последовательность для сундука.">
+    <meta name="keywords" content="Gothic 1 Remake взлом замков, Готика ремейк отмычки, замки сундуков, пластины замка, решение сундука">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Решатель замков для Gothic 1 Remake">
+    <meta property="og:description" content="Укажите позиции пластин и связи замка, чтобы получить понятную последовательность ходов для сундука.">
+    <meta property="og:image" content="/social-share.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="A gothic chest lock with brass moving plates and lockpick tools on a dark medieval workbench.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Решатель замков для Gothic 1 Remake">
+    <meta name="twitter:description" content="Укажите позиции пластин и связи замка, чтобы получить понятную последовательность ходов для сундука.">
+    <meta name="twitter:image" content="/social-share.png">
+    <meta name="twitter:image:alt" content="A gothic chest lock with brass moving plates and lockpick tools on a dark medieval workbench.">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="canonical" href="/ru/">
+    <link rel="alternate" hreflang="en" href="/">
+    <link rel="alternate" hreflang="de" href="/de/">
+    <link rel="alternate" hreflang="pl" href="/pl/">
+    <link rel="alternate" hreflang="ru" href="/ru/">
+    <link rel="alternate" hreflang="es" href="/es/">
+    <link rel="alternate" hreflang="fr" href="/fr/">
+    <link rel="alternate" hreflang="x-default" href="/">
+    <link rel="stylesheet" href="/styles.css">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Gothic 1 Remake решатель замков",
+        "alternateName": ["Gothic Remake Lockpicking Solver", "Gothic Lock Solver", "Gothic Chest Lock Solver"],
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Any",
+        "description": "Инструмент для замков сундуков Gothic 1 Remake: пластины, связи и короткая последовательность ходов.",
+        "keywords": "Gothic 1 Remake взлом замков, Готика ремейк отмычки, замки сундуков, пластины замка",
+        "inLanguage": "ru"
+      }
+    </script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="masthead">
+        <div>
+          <p class="eyebrow">Инструмент для сундуков</p>
+          <h1>Решатель замков для Gothic 1 Remake</h1>
+          <p class="subtitle">Перенесите схему пластин, отметьте связанные движения и получите аккуратную последовательность ходов.</p>
+        </div>
+        <label class="plate-count">
+          <span>Пластины</span>
+          <select id="plate-count" aria-label="Пластины"></select>
+        </label>
+      </header>
+
+      <section class="solver-panel" aria-label="Lock configuration">
+        <div class="table-wrap">
+          <table class="lock-table">
+            <thead>
+              <tr>
+                <th scope="col" class="plate-head">Пластина</th>
+                <th scope="col">1</th>
+                <th scope="col">2</th>
+                <th scope="col">3</th>
+                <th scope="col" class="center-col">4</th>
+                <th scope="col">5</th>
+                <th scope="col">6</th>
+                <th scope="col">7</th>
+                <th scope="col" class="plate-head">Пластина</th>
+                <th scope="col" class="link-head">Вместе</th>
+                <th scope="col" class="link-head">Против</th>
+              </tr>
+            </thead>
+            <tbody id="lock-body"></tbody>
+          </table>
+        </div>
+
+        <div class="actions">
+          <div class="action-buttons">
+            <button id="solve-button" class="solve-button" type="button">Решить</button>
+            <button id="reset-button" class="reset-button" type="button">Сбросить</button>
+          </div>
+          <p class="hint">В полях Вместе/Против указывайте номера пластин, например <span>24</span> или <span>2,4</span>.</p>
+        </div>
+      </section>
+
+      <section id="messages" class="messages" aria-live="polite"></section>
+      <section id="result" class="result" aria-live="polite"></section>
+
+      <section class="seo-copy" aria-labelledby="lockpicking-guide-title">
+        <div class="seo-copy-inner">
+          <h2 id="lockpicking-guide-title">Как решать замки сундуков в Gothic 1 Remake</h2>
+          <p>В ремейке взлом замков стал небольшой логической задачей: несколько пластин двигаются по шкале из семи позиций, а сундук открывается, когда все они сходятся в центре. Если в гайдах или обсуждениях эти детали называют ползунками, штифтами, засовами или рядами, принцип остается тем же.</p>
+          <p>Скопируйте замок из игры в таблицу. У каждой пластины есть стартовая позиция от 1 до 7; позиция 4 отмечает центр и служит целью для всех рядов.</p>
+          <p>Главная сложность в связях между пластинами. Движение одной пластины может сдвигать другие в ту же или противоположную сторону, поэтому один удачный ход легко портит соседний ряд. Заполните связи Вместе и Против, а решатель подберет короткую последовательность для замка Gothic 1 Remake.</p>
+          <p>Текущая конфигурация автоматически сохраняется в URL. Можно обновлять страницу без потери схемы, добавить конкретный замок в закладки или отправить ссылку другу.</p>
+
+          <h3>Как пользоваться</h3>
+          <ol>
+            <li>Выберите количество пластин на замке сундука.</li>
+            <li>Отметьте текущую позицию каждой пластины от 1 до 7.</li>
+            <li>Запишите связанные пластины в поля Вместе или Против.</li>
+            <li>Нажмите Решить и выполните компактную последовательность с номерами и стрелками.</li>
+          </ol>
+
+          <h3>Почему взлом в ремейке цепляет</h3>
+          <p>Старая комбинация влево-вправо уступила место видимой механике. Нужно заметить, какие пластины влияют друг на друга, и вернуть их в центр без недопустимых крайних ходов; именно это и делает отмычки в Готике ремейк не угадайкой, а задачей на внимательность.</p>
+        </div>
+      </section>
+
+      <footer class="language-footer" aria-label="Language versions">
+        <p class="copyright">© 2026 Gothic 1 Remake Lockpick Solver</p>
+        <nav aria-label="Language versions">
+          <a href="/">English</a>
+          <a href="/de/">Deutsch</a>
+          <a href="/pl/">Polski</a>
+          <a href="/ru/">Русский</a>
+          <a href="/es/">Español</a>
+          <a href="/fr/">Français</a>
+        </nav>
+      </footer>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

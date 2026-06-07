@@ -83,12 +83,16 @@ h1 {
 }
 
 .plate-count select {
+  appearance: none;
   min-height: 44px;
   border: 1px solid var(--line);
   border-radius: 6px;
-  background: var(--panel-2);
+  background:
+    linear-gradient(45deg, transparent 50%, var(--gold-2) 50%) right 17px center / 6px 6px no-repeat,
+    linear-gradient(135deg, var(--gold-2) 50%, transparent 50%) right 11px center / 6px 6px no-repeat,
+    var(--panel-2);
   color: var(--text);
-  padding: 0 12px;
+  padding: 0 34px 0 12px;
 }
 
 .solver-panel,
@@ -224,16 +228,39 @@ h1 {
   margin-top: 18px;
 }
 
-.solve-button {
+.action-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.solve-button,
+.reset-button {
   min-width: 132px;
   min-height: 46px;
-  border: 1px solid #e2bd72;
   border-radius: 6px;
-  background: linear-gradient(180deg, #d8b66d, #9e752e);
-  color: #15110a;
   cursor: pointer;
   font-weight: 900;
   text-transform: uppercase;
+}
+
+.solve-button {
+  border: 1px solid #e2bd72;
+  background: linear-gradient(180deg, #d8b66d, #9e752e);
+  color: #15110a;
+}
+
+.reset-button {
+  border: 1px solid var(--line);
+  background: #111110;
+  color: var(--steel);
+}
+
+.reset-button:hover,
+.reset-button:focus-visible {
+  border-color: var(--gold);
+  color: var(--gold-2);
 }
 
 .solve-button:disabled {
@@ -361,6 +388,43 @@ h1 {
   margin-top: 10px;
 }
 
+.language-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 22px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line-soft);
+  color: rgba(170, 162, 148, 0.66);
+  font-size: 0.82rem;
+}
+
+.language-footer p {
+  margin: 0;
+}
+
+.language-footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  align-items: center;
+}
+
+.language-footer a {
+  color: rgba(170, 162, 148, 0.78);
+  text-decoration: none;
+}
+
+.language-footer a:hover,
+.language-footer a:focus-visible {
+  color: var(--gold-2);
+  text-decoration: underline;
+  text-decoration-color: rgba(240, 204, 122, 0.42);
+  text-underline-offset: 4px;
+}
+
 @media (max-width: 720px) {
   .app-shell {
     width: min(100vw - 20px, 1180px);
@@ -371,6 +435,11 @@ h1 {
   .actions {
     align-items: stretch;
     flex-direction: column;
+  }
+
+  .action-buttons {
+    display: grid;
+    grid-template-columns: 1fr;
   }
 
   .plate-count {

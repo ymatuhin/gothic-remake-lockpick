@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dietrich Solver für Gothic 1 Remake</title>
+    <meta name="description" content="Übertrage die Platten eines Gothic 1 Remake Truhenschlosses, ergänze die Verbindungen und erhalte eine kurze Zugfolge.">
+    <meta name="keywords" content="Gothic 1 Remake Dietrich Solver, Gothic Remake Schlossknacken, Truhenschloss Lösung, Platten Puzzle">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Dietrich Solver für Gothic 1 Remake">
+    <meta property="og:description" content="Gib Plattenpositionen und Verbindungen ein, um eine klare Zugfolge für das Truhenschloss zu erhalten.">
+    <meta property="og:image" content="/social-share.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="A gothic chest lock with brass moving plates and lockpick tools on a dark medieval workbench.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Dietrich Solver für Gothic 1 Remake">
+    <meta name="twitter:description" content="Gib Plattenpositionen und Verbindungen ein, um eine klare Zugfolge für das Truhenschloss zu erhalten.">
+    <meta name="twitter:image" content="/social-share.png">
+    <meta name="twitter:image:alt" content="A gothic chest lock with brass moving plates and lockpick tools on a dark medieval workbench.">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="canonical" href="/de/">
+    <link rel="alternate" hreflang="en" href="/">
+    <link rel="alternate" hreflang="de" href="/de/">
+    <link rel="alternate" hreflang="pl" href="/pl/">
+    <link rel="alternate" hreflang="ru" href="/ru/">
+    <link rel="alternate" hreflang="es" href="/es/">
+    <link rel="alternate" hreflang="fr" href="/fr/">
+    <link rel="alternate" hreflang="x-default" href="/">
+    <link rel="stylesheet" href="/styles.css">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Dietrich Solver für Gothic 1 Remake",
+        "alternateName": ["Gothic Remake Lockpicking Solver", "Gothic Lock Solver", "Gothic Chest Lock Solver"],
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Any",
+        "description": "Werkzeug für Gothic 1 Remake Truhenschlösser mit Platten, Verbindungen und kurzer Zugfolge.",
+        "keywords": "Gothic 1 Remake Dietrich Solver, Gothic Remake Schlossknacken, Truhenschloss Lösung, Platten Puzzle",
+        "inLanguage": "de"
+      }
+    </script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="masthead">
+        <div>
+          <p class="eyebrow">Werkzeug für Truhen</p>
+          <h1>Dietrich Solver für Gothic 1 Remake</h1>
+          <p class="subtitle">Übertrage die Platten, markiere verbundene Bewegungen und erhalte eine klare Zugfolge.</p>
+        </div>
+        <label class="plate-count">
+          <span>Platten</span>
+          <select id="plate-count" aria-label="Platten"></select>
+        </label>
+      </header>
+
+      <section class="solver-panel" aria-label="Lock configuration">
+        <div class="table-wrap">
+          <table class="lock-table">
+            <thead>
+              <tr>
+                <th scope="col" class="plate-head">Platte</th>
+                <th scope="col">1</th>
+                <th scope="col">2</th>
+                <th scope="col">3</th>
+                <th scope="col" class="center-col">4</th>
+                <th scope="col">5</th>
+                <th scope="col">6</th>
+                <th scope="col">7</th>
+                <th scope="col" class="plate-head">Platte</th>
+                <th scope="col" class="link-head">Gleich</th>
+                <th scope="col" class="link-head">Entgegengesetzt</th>
+              </tr>
+            </thead>
+            <tbody id="lock-body"></tbody>
+          </table>
+        </div>
+
+        <div class="actions">
+          <div class="action-buttons">
+            <button id="solve-button" class="solve-button" type="button">Lösen</button>
+            <button id="reset-button" class="reset-button" type="button">Zurücksetzen</button>
+          </div>
+          <p class="hint">Nutze Plattennummern bei Gleich/Entgegengesetzt, zum Beispiel <span>24</span> oder <span>2,4</span>.</p>
+        </div>
+      </section>
+
+      <section id="messages" class="messages" aria-live="polite"></section>
+      <section id="result" class="result" aria-live="polite"></section>
+
+      <section class="seo-copy" aria-labelledby="lockpicking-guide-title">
+        <div class="seo-copy-inner">
+          <h2 id="lockpicking-guide-title">Truhenschlösser in Gothic 1 Remake lösen</h2>
+          <p>Schlossknacken ist im Remake ein Logikpuzzle mit Platten, die auf sieben Positionen laufen. Manche Beschreibungen nennen die Teile Schieber, Stifte, Riegel oder Reihen; gemeint ist derselbe Mechanismus, der am Ende überall Position 4 erreichen muss.</p>
+          <p>Übertrage zuerst die Startpositionen aus dem Truhenschloss. Danach markierst du, welche Platten beim Bewegen einer anderen Platte mitlaufen.</p>
+          <p>Schwierig wird es durch Verbindungen: Eine Bewegung kann andere Platten in die gleiche oder entgegengesetzte Richtung ziehen. Trage die Gleich/Entgegengesetzt-Verbindungen ein, dann berechnet der Solver eine kurze Zugfolge für das Gothic 1 Remake Schlossknacken.</p>
+          <p>Die aktuelle Schlosskonfiguration wird automatisch in der URL gespeichert. Du kannst ein Puzzle also als Lesezeichen sichern, die Seite aktualisieren oder den exakten Aufbau teilen.</p>
+
+          <h3>So benutzt du ihn</h3>
+          <ol>
+            <li>Wähle die Anzahl der Platten am Truhenschloss.</li>
+            <li>Markiere für jede Platte die aktuelle Position von 1 bis 7.</li>
+            <li>Trage verbundene Platten bei Gleich oder Entgegengesetzt ein.</li>
+            <li>Klicke auf Lösen und folge der kompakten Pfeil-Sequenz.</li>
+          </ol>
+
+          <h3>Warum die Schlösser knifflig sind</h3>
+          <p>Das Remake ersetzt die alte Links-Rechts-Kombination durch ein sichtbares mechanisches System. Du beobachtest, welche Platten sich gegenseitig beeinflussen, und bringst sie ohne ungültige Randbewegung zurück in die Mitte.</p>
+        </div>
+      </section>
+
+      <footer class="language-footer" aria-label="Language versions">
+        <p class="copyright">© 2026 Gothic 1 Remake Lockpick Solver</p>
+        <nav aria-label="Language versions">
+          <a href="/">English</a>
+          <a href="/de/">Deutsch</a>
+          <a href="/pl/">Polski</a>
+          <a href="/ru/">Русский</a>
+          <a href="/es/">Español</a>
+          <a href="/fr/">Français</a>
+        </nav>
+      </footer>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

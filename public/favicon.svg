@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Gothic lockpick icon">
+  <defs>
+    <linearGradient id="bg" x1="8" y1="4" x2="56" y2="62" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#24221f"/>
+      <stop offset="1" stop-color="#0d0d0c"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="16" y1="14" x2="48" y2="55" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f0cc7a"/>
+      <stop offset="1" stop-color="#9b7733"/>
+    </linearGradient>
+    <linearGradient id="steel" x1="14" y1="50" x2="49" y2="16" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6f7778"/>
+      <stop offset="0.42" stop-color="#d1d6d5"/>
+      <stop offset="1" stop-color="#858d8f"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="64" height="64" rx="12" fill="url(#bg)"/>
+  <path d="M32 8 50 16v15c0 12.6-7.8 20.4-18 26-10.2-5.6-18-13.4-18-26V16Z" fill="#171716" stroke="#48453f" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M22 30h20v17H22Z" fill="url(#gold)" stroke="#3a2b12" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M25 30v-6a7 7 0 0 1 14 0v6" fill="none" stroke="url(#gold)" stroke-width="5" stroke-linecap="round"/>
+  <path d="M32 35a3 3 0 0 1 1.4 5.7V44h-2.8v-3.3A3 3 0 0 1 32 35Z" fill="#171716"/>
+  <path d="M16 48 45 19" stroke="#1b1a18" stroke-width="8" stroke-linecap="round"/>
+  <path d="M16 48 45 19" stroke="url(#steel)" stroke-width="4" stroke-linecap="round"/>
+  <path d="M43 18h9l-5 5Z" fill="#c7a35c" stroke="#3a2b12" stroke-width="1.5" stroke-linejoin="round"/>
+  <circle cx="16" cy="48" r="5" fill="#c7a35c" stroke="#3a2b12" stroke-width="2"/>
+</svg>

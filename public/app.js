@@ -4,9 +4,142 @@ const POSITIONS = 7;
 const TARGET_POSITION = 4;
 const DEFAULT_PLATES = 5;
 
+const TRANSLATIONS = {
+  en: {
+    plate: "Plate",
+    same: "Same",
+    opposite: "Opposite",
+    solve: "Solve",
+    reset: "Reset",
+    solving: "Solving...",
+    fixScheme: "Fix the lock scheme",
+    unsupported: "{label} contains unsupported characters.",
+    missingPlate: "plate {value} does not exist.",
+    movedPlate: "do not list the moved plate in {label}.",
+    repeated: "plate {value} is repeated in {label}.",
+    bothLists: "plate {value} is listed in both Same and Opposite.",
+    alreadyOpenTitle: "Already open",
+    alreadyOpenText: "All plates are already in position 4.",
+    noSolutionTitle: "No solution found",
+    noSolutionText: "Check the starting positions and linked plates.",
+    compactSolution: "Compact solution",
+    move: "Move",
+    positionsAfterMove: "Positions after move",
+  },
+  de: {
+    plate: "Platte",
+    same: "Gleich",
+    opposite: "Entgegengesetzt",
+    solve: "Lösen",
+    reset: "Zurücksetzen",
+    solving: "Löse...",
+    fixScheme: "Schlossschema korrigieren",
+    unsupported: "{label} enthält nicht unterstützte Zeichen.",
+    missingPlate: "Platte {value} existiert nicht.",
+    movedPlate: "die bewegte Platte nicht bei {label} eintragen.",
+    repeated: "Platte {value} ist bei {label} doppelt eingetragen.",
+    bothLists: "Platte {value} steht sowohl bei Gleich als auch bei Entgegengesetzt.",
+    alreadyOpenTitle: "Schon offen",
+    alreadyOpenText: "Alle Platten sind bereits auf Position 4.",
+    noSolutionTitle: "Keine Lösung gefunden",
+    noSolutionText: "Prüfe Startpositionen und verbundene Platten.",
+    compactSolution: "Kompakte Lösung",
+    move: "Zug",
+    positionsAfterMove: "Positionen nach dem Zug",
+  },
+  pl: {
+    plate: "Płytka",
+    same: "Razem",
+    opposite: "Przeciwnie",
+    solve: "Rozwiąż",
+    reset: "Resetuj",
+    solving: "Liczenie...",
+    fixScheme: "Popraw schemat zamka",
+    unsupported: "{label} zawiera nieobsługiwane znaki.",
+    missingPlate: "płytka {value} nie istnieje.",
+    movedPlate: "nie wpisuj poruszanej płytki w polu {label}.",
+    repeated: "płytka {value} powtarza się w polu {label}.",
+    bothLists: "płytka {value} jest wpisana jednocześnie w Razem i Przeciwnie.",
+    alreadyOpenTitle: "Już otwarte",
+    alreadyOpenText: "Wszystkie płytki są już na pozycji 4.",
+    noSolutionTitle: "Nie znaleziono rozwiązania",
+    noSolutionText: "Sprawdź pozycje startowe i połączone płytki.",
+    compactSolution: "Krótka sekwencja",
+    move: "Ruch",
+    positionsAfterMove: "Pozycje po ruchu",
+  },
+  ru: {
+    plate: "Пластина",
+    same: "Вместе",
+    opposite: "Против",
+    solve: "Решить",
+    reset: "Сбросить",
+    solving: "Решаю...",
+    fixScheme: "Исправьте схему замка",
+    unsupported: "поле {label} содержит недопустимые символы.",
+    missingPlate: "пластины {value} не существует.",
+    movedPlate: "не указывайте двигаемую пластину в поле {label}.",
+    repeated: "пластина {value} повторяется в поле {label}.",
+    bothLists: "пластина {value} указана и в Вместе, и в Против.",
+    alreadyOpenTitle: "Уже открыто",
+    alreadyOpenText: "Все пластины уже стоят на позиции 4.",
+    noSolutionTitle: "Решение не найдено",
+    noSolutionText: "Проверьте стартовые позиции и связи пластин.",
+    compactSolution: "Краткое решение",
+    move: "Ход",
+    positionsAfterMove: "Позиции после хода",
+  },
+  es: {
+    plate: "Placa",
+    same: "Igual",
+    opposite: "Opuesto",
+    solve: "Resolver",
+    reset: "Restablecer",
+    solving: "Resolviendo...",
+    fixScheme: "Corrige el esquema de la cerradura",
+    unsupported: "{label} contiene caracteres no admitidos.",
+    missingPlate: "la placa {value} no existe.",
+    movedPlate: "no incluyas la placa movida en {label}.",
+    repeated: "la placa {value} está repetida en {label}.",
+    bothLists: "la placa {value} aparece en Igual y en Opuesto.",
+    alreadyOpenTitle: "Ya está abierta",
+    alreadyOpenText: "Todas las placas ya están en la posición 4.",
+    noSolutionTitle: "No se encontró solución",
+    noSolutionText: "Revisa las posiciones iniciales y las placas conectadas.",
+    compactSolution: "Solución compacta",
+    move: "Movimiento",
+    positionsAfterMove: "Posiciones tras mover",
+  },
+  fr: {
+    plate: "Plaque",
+    same: "Même",
+    opposite: "Opposé",
+    solve: "Résoudre",
+    reset: "Réinitialiser",
+    solving: "Calcul...",
+    fixScheme: "Corriger le schéma de serrure",
+    unsupported: "{label} contient des caractères non pris en charge.",
+    missingPlate: "la plaque {value} n’existe pas.",
+    movedPlate: "n’ajoutez pas la plaque déplacée dans {label}.",
+    repeated: "la plaque {value} est répétée dans {label}.",
+    bothLists: "la plaque {value} est indiquée dans Même et Opposé.",
+    alreadyOpenTitle: "Déjà ouvert",
+    alreadyOpenText: "Toutes les plaques sont déjà en position 4.",
+    noSolutionTitle: "Aucune solution trouvée",
+    noSolutionText: "Vérifiez les positions de départ et les plaques liées.",
+    compactSolution: "Solution compacte",
+    move: "Mouvement",
+    positionsAfterMove: "Positions après mouvement",
+  },
+};
+
+const currentLanguage = document.documentElement.lang.split("-")[0];
+const copy = TRANSLATIONS[currentLanguage] ?? TRANSLATIONS.en;
+
 const plateCountSelect = document.querySelector("#plate-count");
 const lockBody = document.querySelector("#lock-body");
 const solveButton = document.querySelector("#solve-button");
+const resetButton = document.querySelector("#reset-button");
 const messages = document.querySelector("#messages");
 const result = document.querySelector("#result");
 
@@ -32,8 +165,27 @@ function init() {
   plateCountSelect.value = String(plateCount);
   plateCountSelect.addEventListener("change", handlePlateCountChange);
   solveButton.addEventListener("click", solve);
+  resetButton.addEventListener("click", resetLock);
   renderLock();
   writeUrlConfig();
+}
+
+function createDefaultPositions(count = DEFAULT_PLATES) {
+  return Array.from({ length: count }, () => TARGET_POSITION);
+}
+
+function createDefaultLinks(count = DEFAULT_PLATES) {
+  return Array.from({ length: count }, () => ({ same: "", opposite: "" }));
+}
+
+function resetLock() {
+  plateCount = DEFAULT_PLATES;
+  positions = createDefaultPositions();
+  links = createDefaultLinks();
+  plateCountSelect.value = String(plateCount);
+  clearOutput();
+  renderLock();
+  window.history.replaceState(null, "", `${window.location.pathname}${window.location.hash}`);
 }
 
 function handlePlateCountChange(event) {
@@ -134,14 +286,14 @@ function renderLock() {
 
       const label = document.createElement("label");
       label.className = "position-radio";
-      label.title = `Plate ${plate}, position ${position}`;
+      label.title = `${copy.plate} ${plate}, position ${position}`;
 
       const radio = document.createElement("input");
       radio.type = "radio";
       radio.name = `plate-${plate}-position`;
       radio.value = String(position);
       radio.checked = positions[plateIndex] === position;
-      radio.setAttribute("aria-label", `Plate ${plate}, position ${position}`);
+      radio.setAttribute("aria-label", `${copy.plate} ${plate}, position ${position}`);
       radio.addEventListener("change", () => {
         positions[plateIndex] = position;
         clearOutput();
@@ -174,7 +326,7 @@ function createLinkCell(plateIndex, field, labelText) {
   input.autocomplete = "off";
   input.value = links[plateIndex][field];
   input.placeholder = "24";
-  input.setAttribute("aria-label", `Plate ${plateIndex + 1} ${labelText}`);
+  input.setAttribute("aria-label", `${copy.plate} ${plateIndex + 1} ${labelText}`);
   input.dataset.plate = String(plateIndex + 1);
   input.dataset.field = field;
   input.addEventListener("input", () => {
@@ -224,7 +376,7 @@ function validateLinks() {
 
     sameSet.forEach((value) => {
       if (oppositeSet.has(value)) {
-        errors.push(`Plate ${plate}: plate ${value} is listed in both Same and Opposite.`);
+        errors.push(formatError(plate, "bothLists", "", value));
         markInvalidInput(plate, "same");
         markInvalidInput(plate, "opposite");
       }
@@ -242,26 +394,27 @@ function validateLinks() {
 function validateList(errors, list, seen, plate, label) {
   list.forEach((value) => {
     const field = label.toLowerCase();
+    const localizedLabel = field === "same" ? copy.same : copy.opposite;
     if (!Number.isInteger(value)) {
-      errors.push(`Plate ${plate}: ${label} contains unsupported characters.`);
+      errors.push(formatError(plate, "unsupported", localizedLabel, value));
       markInvalidInput(plate, field);
       return;
     }
 
     if (value < 1 || value > plateCount) {
-      errors.push(`Plate ${plate}: plate ${value} does not exist.`);
+      errors.push(formatError(plate, "missingPlate", localizedLabel, value));
       markInvalidInput(plate, field);
       return;
     }
 
     if (value === plate) {
-      errors.push(`Plate ${plate}: do not list the moved plate in ${label}.`);
+      errors.push(formatError(plate, "movedPlate", localizedLabel, value));
       markInvalidInput(plate, field);
       return;
     }
 
     if (seen.has(value)) {
-      errors.push(`Plate ${plate}: plate ${value} is repeated in ${label}.`);
+      errors.push(formatError(plate, "repeated", localizedLabel, value));
       markInvalidInput(plate, field);
       return;
     }
@@ -286,12 +439,12 @@ function solve() {
   }
 
   solveButton.disabled = true;
-  solveButton.textContent = "Solving...";
+  solveButton.textContent = copy.solving;
 
   requestAnimationFrame(() => {
     const solution = findShortestSolution(positions, parsed);
     solveButton.disabled = false;
-    solveButton.textContent = "Solve";
+    solveButton.textContent = copy.solve;
     showSolution(solution);
   });
 }
@@ -388,19 +541,19 @@ function addDelta(deltas, plateIndex, direction) {
 
 function showErrors(errors) {
   messages.className = "messages visible";
-  messages.innerHTML = `<h2>Fix the lock scheme</h2><ul>${errors.map((error) => `<li>${escapeHtml(error)}</li>`).join("")}</ul>`;
+  messages.innerHTML = `<h2>${copy.fixScheme}</h2><ul>${errors.map((error) => `<li>${escapeHtml(error)}</li>`).join("")}</ul>`;
 }
 
 function showSolution(solution) {
   result.className = "result visible";
 
   if (solution.status === "already-open") {
-    result.innerHTML = `<h2>Already open</h2><p class="status">All plates are already in position 4.</p>`;
+    result.innerHTML = `<h2>${copy.alreadyOpenTitle}</h2><p class="status">${copy.alreadyOpenText}</p>`;
     return;
   }
 
   if (solution.status === "no-solution") {
-    result.innerHTML = `<h2>No solution found</h2><p class="status">Check the starting positions and linked plates.</p>`;
+    result.innerHTML = `<h2>${copy.noSolutionTitle}</h2><p class="status">${copy.noSolutionText}</p>`;
     return;
   }
 
@@ -414,19 +567,26 @@ function showSolution(solution) {
   `).join("");
 
   result.innerHTML = `
-    <h2>Compact solution</h2>
+    <h2>${copy.compactSolution}</h2>
     <p class="solution-line">${compact}</p>
     <table class="steps">
       <thead>
         <tr>
           <th>#</th>
-          <th>Move</th>
-          <th>Positions after move</th>
+          <th>${copy.move}</th>
+          <th>${copy.positionsAfterMove}</th>
         </tr>
       </thead>
       <tbody>${rows}</tbody>
     </table>
   `;
+}
+
+function formatError(plate, messageKey, label, value) {
+  const message = copy[messageKey]
+    .replace("{label}", label)
+    .replace("{value}", value);
+  return `${copy.plate} ${plate}: ${message}`;
 }
 
 function formatMove(move) {
