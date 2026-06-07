@@ -1,0 +1,23 @@
+{
+  "name": "gothic-lockpick",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "gothic-1-remake",
+    "gothic-remake",
+    "lockpick-solver",
+    "lockpicking-solver",
+    "lock-solver",
+    "chest-lock-solver",
+    "lockpicking-minigame",
+    "slider-puzzle",
+    "pin-puzzle",
+    "tumbler-puzzle"
+  ],
+  "author": "",
+  "license": "ISC",
+  "description": "Browser solver for Gothic 1 Remake lockpicking minigame chest locks."
+}
