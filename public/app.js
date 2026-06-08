@@ -325,7 +325,7 @@ function createLinkCell(plateIndex, field, labelText) {
   input.inputMode = "numeric";
   input.autocomplete = "off";
   input.value = links[plateIndex][field];
-  input.placeholder = "24";
+  input.placeholder = "Ex: 2,4 or 24";
   input.setAttribute("aria-label", `${copy.plate} ${plateIndex + 1} ${labelText}`);
   input.dataset.plate = String(plateIndex + 1);
   input.dataset.field = field;
@@ -557,7 +557,7 @@ function showSolution(solution) {
     return;
   }
 
-  const compact = solution.moves.map(formatMove).join(" ");
+  const compact = formatCompactMoves(solution.moves);
   const rows = solution.moves.map((move, index) => `
     <tr>
       <td>${index + 1}</td>
@@ -568,7 +568,7 @@ function showSolution(solution) {
 
   result.innerHTML = `
     <h2>${copy.compactSolution}</h2>
-    <p class="solution-line">${compact}</p>
+    <div class="solution-line">${compact}</div>
     <table class="steps">
       <thead>
         <tr>
@@ -580,6 +580,16 @@ function showSolution(solution) {
       <tbody>${rows}</tbody>
     </table>
   `;
+}
+
+function formatCompactMoves(moves) {
+  const groups = [];
+
+  for (let index = 0; index < moves.length; index += 4) {
+    groups.push(moves.slice(index, index + 4).map(formatMove).join(" "));
+  }
+
+  return groups.map((group) => `<p>${group}</p>`).join("");
 }
 
 function formatError(plate, messageKey, label, value) {
